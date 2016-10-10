@@ -1,10 +1,44 @@
+@padLeft:20px;
+@padTop:10px;
+
 .pizza-card {
+  background-color: white;
   img {
     max-width: 250px;
   }
-
   h3 {
     color: @mainColor;
-    background-color: lighten(@mainColor, 45%);
+    font-weight: bold;
+  }
+
+  .type{
+    color: silver;
+    font-size: 12px;
+  }
+
+  .description{
+    height: 80px;
+  }
+
+  .small-pizza, .big-pizza, .onetype-pizza{
+    .prise{
+      padding-top: @padTop;
+      padding-left: @padLeft*0.7;
+      font-size: 32px;
+    }
+
+    .properties{
+      padding-left: @padLeft;
+      padding-top: @padTop;
+    }
+
+    .btn{
+      margin-left: @padLeft*0.5;
+    }
+  }
+
+  .onetype-pizza{
+    text-align: center;
+
   }
 }

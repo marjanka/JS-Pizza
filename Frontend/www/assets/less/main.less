@@ -1,3 +1,222 @@
-@mainColor: blue;
-
 @import "pizza/pizza-card";
+
+@mainColor:#ec890e;
+@white:#ffffff;
+@pading:10%;
+@width:75%;
+
+body{
+  background-color:lighten(@mainColor, 50%);
+}
+.container-fluid{
+  padding-left:0;
+}
+.left-panel{
+  width: @width;
+  padding-top: @pading*0.7;
+}
+.right-panel{
+  width: 25%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: @white;
+  padding: 0;
+}
+.top-panel{
+  width: @width;
+  opacity: 0.8;
+  .first-row {
+    font-size: 14px;
+    line-height: 11px;
+    padding-left: 12%;
+    margin-top: 15px;
+    color: #a1a1a1;
+    .header-items{
+      border-bottom: 1px solid;
+      .header-item{
+        padding-left: 20px;
+      }
+      .btn{
+        float: right;
+        margin-top: -10px;
+      }
+      .phone {
+        font-size: 22px;
+        padding-bottom: 15px;
+      }
+    }
+  }
+  .second-row{
+    margin: 7px;
+    color: @white;
+    font-size: 18px;
+    padding-left: 14%;
+  }
+}
+.label-new, .label-popular{
+  position: absolute;
+  top:0;
+  right: 0;
+  margin-top: -4%;
+}
+.title {
+  text-align: center;
+}
+.count-color{
+  background-color:@mainColor;
+}
+.order{
+  padding-top: @pading*0.8;
+  padding-left: @pading*0.5;
+  height: @pading;
+  .orders-title{
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .clear-order{
+    padding-top: @pading*0.4;
+    font-size: 10px;
+    float: right;
+    color: gray;
+  }
+}
+.all-orders{
+  height: 70%;
+  margin: 0;
+  background-color: #EFEEEC;
+  .one-order {
+    border-bottom: 1px solid #D1D0CE;
+    padding-bottom: @pading*0.3;
+    h4 {
+      padding: @pading*0.5;
+      padding-bottom: 0;
+      color: @mainColor;
+    }
+    .pizza-icon {
+      max-width: 110px;
+      float: right;
+      margin-right: -55px;
+    }
+    .properties {
+      padding: @pading*0.5;
+      padding-top: 0;
+    }
+    .price-box {
+      .buy-price {
+        padding: @pading*0.5;
+        font-size: 14px;
+        font-weight: bold;
+      }
+      .btn-circle {
+        width: 30px;
+        height: 30px;
+        padding: 6px 0;
+        font-size: 12px;
+        border-radius: 15px;
+      }
+      .delete{
+        margin-left: 25px;
+        color:@mainColor;
+        width: 32px;
+        height: 32px;
+        background-color: #FEFCFF;
+      }
+    }
+  }
+}
+.sum-price{
+  height: @pading;
+  .sum-title{
+    font-size: 20px;
+  }
+  .sum-number{
+    font-size: 24px;
+    float: right;
+  }
+}
+.order-button{
+  padding: 20px;
+}
+.pizza-types{
+  padding-left: @pading*2;
+  padding-bottom: @pading*0.5;
+  .nav-pills a{
+    color:lighten(@mainColor, 10%);
+  }
+  .nav-pills .active a{
+    background-color:@mainColor;
+    color:@white;
+  }
+  .nav-pills .active a:hover{
+    background-color:@mainColor;
+    color:@white;
+  }
+}
+.footer {
+  padding: @pading*0.2;
+  margin: 0;
+  color: grey;
+  background-color:@white;
+  border-top: 1px solid #e5e5e5;
+  width: @width;
+  text-align: center;
+}
+.sticker{
+  z-index: 50;
+  position:fixed;
+  width: 100px;
+  height: 200px;
+  bottom:-80px;
+  left: 30px;
+  background-color: @mainColor;
+  color: @white;
+  text-align: center;
+  padding: 15px;
+
+  .im-discont{
+    top: -15px;
+    left: 0;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+  }
+  .title{
+    font-weight: bold;
+    font-size: 16px;
+    border-bottom: 2px dotted darken(@mainColor, 15%);
+  }
+  .discount{
+    font-size: 24px;
+    font-weight: bold;
+    font-family:cursive, sans-serif;
+  }
+}
+
+.navbar-header{
+  z-index: 50;
+  position:fixed;
+  width: 100px;
+  height: 95px;
+  left: 30px;
+  background-color: @mainColor;
+  color: @white;
+  text-align: center;
+  padding: 15px;
+
+  .im-navbar{
+    top: 90px;
+    left: 0;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    transform: scaleY(-1);
+  }
+  .brand{
+    font-size: 24px;
+    font-weight: bold;
+    font-family:cursive, sans-serif;
+  }
+}
+
