@@ -2,6 +2,7 @@
  * Created by chaika on 02.02.16.
  */
 var Templates = require('../Templates');
+var storage = require('./storage');
 
 //Перелік розмірів піци
 var PizzaSize = {
@@ -11,14 +12,18 @@ var PizzaSize = {
 
 //Змінна в якій зберігаються перелік піц в кошику
 var Cart = [];
+var saveCart = storage.get("cart");
+if(saveCart){
+    Cart=saveCart;
+}
 
 //HTML едемент куди будуть додаватися піци
-var $cart = $("#cart");
+var $cart = $("#all-orders");
+var $summa = $(".sum-number");
 
 function addToCart(pizza, size) {
     //Додавання однієї піци в кошик покупок
-
-    //Приклад реалізації, можна робити будь-яким іншим способом
+//if(pizza)
     Cart.push({
         pizza: pizza,
         size: size,
@@ -32,16 +37,25 @@ function addToCart(pizza, size) {
 function removeFromCart(cart_item) {
     //Видалити піцу з кошика
     //TODO: треба зробити
-
+var index =Cart.indexOf(cart_item);
+    if(index> -1){
+        Cart.splice(index,1);
+    }
     //Після видалення оновити відображення
     updateCart();
+}
+
+function cleanCart() {
+    Cart=[];
+    updateCart();
+
 }
 
 function initialiseCart() {
     //Фукнція віпрацьвуватиме при завантаженні сторінки
     //Тут можна наприклад, зчитати вміст корзини який збережено в Local Storage то показати його
     //TODO: ...
-
+$(".clear-order").click(cleanCart);
     updateCart();
 }
 
@@ -62,20 +76,35 @@ function updateCart() {
         var html_code = Templates.PizzaCart_OneItem(cart_item);
 
         var $node = $(html_code);
-
+        var price=cart_item.price;
         $node.find(".plus").click(function(){
             //Збільшуємо кількість замовлених піц
             cart_item.quantity += 1;
-
+            price+=cart_item.price;
             //Оновлюємо відображення
             updateCart();
         });
 
+        $node.find(".minus").click(function(){
+            cart_item.quantity -= 1;
+            if(cart_item.quantity==0){
+                removeFromCart(cart_item);
+            }else {
+            //Оновлюємо відображення
+            updateCart();}
+        });
+
+        $node.find(".delete").click(function(){
+
+            removeFromCart(cart_item);
+        });
+
         $cart.append($node);
+        $summa.append(price);
     }
 
     Cart.forEach(showOnePizzaInCart);
-
+    storage.set("cart",Cart);
 }
 
 exports.removeFromCart = removeFromCart;
